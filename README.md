@@ -84,6 +84,7 @@ Beide Dateien in den finalen Ordner kopieren, z. B. `C:\Tools\SlnLauncher\`.
 Windows übergibt den Dateipfad automatisch als erstes Argument.
 
 
+
 ## Bekannte Einschränkungen
 
 - Erkennung basiert auf reinem Text-Matching in den ersten Zeilen – keine

@@ -83,48 +83,6 @@ Beide Dateien in den finalen Ordner kopieren, z. B. `C:\Tools\SlnLauncher\`.
 
 Windows übergibt den Dateipfad automatisch als erstes Argument.
 
-## Troubleshooting
-
-### Doppelklick auf .sln öffnet nichts
-
-Meist eine unbehandelte Exception in der WinExe-App – ohne Konsolenfenster
-bleibt das unsichtbar. Vorgehen:
-
-1. **Isoliert per Kommandozeile testen**, um Code- von
-   Registrierungsproblemen zu trennen:
-   ```powershell
-   C:\Tools\SlnLauncher\SlnLauncher.exe "C:\Pfad\zu\test.sln"
-   ```
-   - Funktioniert das → Problem liegt an der Windows-Registrierung, nicht am
-     Launcher.
-   - Funktioniert das nicht → weiter mit Schritt 2.
-
-2. **Sauber neu publishen**, um Build-Reste auszuschließen (siehe oben,
-   inkl. `Remove-Item bin, obj`).
-
-3. **Prüfen, dass `config.json` neben der exe liegt** und gültiges JSON
-   enthält. Fehlt die Datei oder ist sie fehlerhaft, zeigt der Launcher
-   eine MessageBox mit entsprechendem Hinweis (kein stilles Scheitern).
-
-4. Falls weiterhin nichts erscheint: temporär einen globalen
-   Exception-Handler sowie eine Debug-`MessageBox` am Programmstart
-   einbauen, die `args.Length`, `args[0]` und `AppContext.BaseDirectory`
-   anzeigt. Das zeigt zuverlässig, ob Windows den Pfad überhaupt übergibt
-   und wo der Ablauf abbricht.
-
-### "Zielanwendung nicht gefunden"
-
-Pfad in `config.json` stimmt nicht mit der tatsächlichen Installation
-überein (z. B. nach TwinCAT-Update oder anderer VS-Edition/Instanz).
-Tatsächlichen Pfad prüfen: Startmenü → Rechtsklick auf die Verknüpfung →
-Eigenschaften → Zielpfad. Anschließend `config.json` anpassen – kein
-Rebuild nötig.
-
-### Marker-Erkennung schlägt fehl
-
-Der Launcher liest nur die **ersten 5 Zeilen** der `.sln`. Falls sich der
-Header-Text bei einer TwinCAT- oder Visual-Studio-Version ändert, den
-`contains`-Wert in `config.json` entsprechend anpassen oder erweitern.
 
 ## Bekannte Einschränkungen
 

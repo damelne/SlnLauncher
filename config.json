@@ -1,0 +1,11 @@
+{
+  "devenvPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\devenv.exe",
+  "tcXaeShellPath": "C:\\Program Files\\Beckhoff\\TcXaeShell\\Common7\\IDE\\TcXaeShell.exe",
+  "markers": [
+    {
+      "contains": "TcXaeShell Solution File",
+      "target": "tcXaeShellPath"
+    }
+  ],
+  "defaultTarget": "devenvPath"
+}
